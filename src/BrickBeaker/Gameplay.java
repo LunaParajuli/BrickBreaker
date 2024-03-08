@@ -52,27 +52,59 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
         
         //the ball
         g.setColor(Color.yellow);
-        g.fillRect(ballposX,ballposY,20,20);
+        g.fillOval(ballposX,ballposY,20,20);
+        
+        g.dispose();
     }
-            
+     
+    @Override
+    public void actionPerformed(ActionEvent e) {
+       timer.start();
+       repaint();
+    }
+    
     @Override
     public void keyTyped(KeyEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         
+    }
+    @Override
+    public void keyReleased(KeyEvent e) {
+        
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       if(e.getKeyCode() == KeyEvent.VK_RIGHT)
+       {
+           if(playerX >=600)
+           {
+               playerX = 600;
+           }else{
+               moveRight();
+           }
+       }
+       if(e.getKeyCode() == KeyEvent.VK_LEFT)
+       {
+           if(playerX >=600)
+           {
+               playerX = 600;
+           }else{
+               moveLeft();
+           }    
+       }
     }
+    public void moveRight()
+    {
+        play = true;
+        playerX+= 20;
+    }
+    public void moveLeft()
+    {
+        play = true;
+        playerX-= 20;
+    }
+    
 
-    @Override
-    public void keyReleased(KeyEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
     
 }
